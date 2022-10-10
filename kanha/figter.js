@@ -130,6 +130,65 @@ console.log(calculator(4, "/", 2));
 
 // create a function that's fetch data
  
+//command line of calculator
+
+import { Command } from 'commander'
+
+const program = new Command();
+
+
+program
+  .name("calculate_two_number")
+  .description("the function to calculate two number")
+  .version('0.0.1');
+
+program
+  .command("test")
+  .description("using command to calculate two number")
+  .argument('number', 'first number to sum')
+  .argument('number', 'second number')
+  .option('-s, --sum', 'sum two number')
+  .option('-sub, --sub', 'minus two number')
+  .option('-d, --divide', 'divide with two number')
+  .option('-m, --mutiply', 'mutiply with two number')
+  .action((a, b, opts) => {
+    if (opts.sum) {
+      console.log(
+        (
+          Number.parseInt(a) +
+          Number.parseInt(b)
+        )
+      )
+    }
+    if (opts.sub) {
+      console.log(
+        (
+          Number.parseInt(a) -
+          Number.parseInt(b)
+        )
+      )
+    }
+    if (opts.mutiply){
+      console.log(
+        (
+          Number.parseInt(a)*
+          Number.parseInt(b)
+        )
+      )
+    }
+    if (opts.divide) {
+      console.log(
+        (
+          Number.parseInt(a) /
+          Number.parseInt(b)
+        )
+      )
+    }
+  }
+  )
+  program.parse()
+
+
     
 
 
